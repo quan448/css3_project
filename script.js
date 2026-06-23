@@ -1,75 +1,83 @@
 /* ==========================================================================
-   1. COMMENT OUT STYLE CŨ CỦA LI ELEMENT (Yêu cầu đề bài)
+   1. COMMENT OUT STYLE CŨ CỦA LI ELEMENT
    ========================================================================== */
-/* 
-li {
-    list-style-type: none;
-    margin: 10px;
-} 
+/* li { list-style-type: none; } 
 */
 
 
 /* ==========================================================================
-   2. ACCESSIBILITY (Style cho cái Skip Link tinh tế hơn)
+   2. ACCESSIBILITY (Skip Link)
    ========================================================================== */
-/* Mặc định ẩn nó đi để không làm xấu giao diện */
 .skip-link {
     position: absolute;
     top: -100px;
     left: 10px;
-    background: #222;
+    background: #111;
     color: #fff;
-    padding: 10px 15px;
+    padding: 10px;
     text-decoration: none;
-    border-radius: 4px;
     z-index: 999;
 }
-
-/* Chỉ hiện lên khi người dùng nhấn phím Tab (Focus) */
 .skip-link:focus {
     top: 10px;
 }
 
 
 /* ==========================================================================
-   3. NAV STYLING (Yêu cầu đổi sang inline-block và width ~80%)
+   3. NAV STYLING (Yêu cầu: inline-block và width ~80%)
    ========================================================================== */
 nav {
     display: inline-block;
     width: 80%;
-    background-color: #f4f4f4; /* Màu nền nhẹ để bồ dễ nhìn thấy block */
-    padding: 10px;
+    background-color: #f0f0f0; 
+    padding: 15px;
     vertical-align: middle;
 }
 
-/* Descendent selector: Chỉ style cho thẻ img NẰM TRONG nav (width ~10%) */
-nav img {
-    width: 10%;
-    height: auto;
+/* Thay thế selector "nav img" bằng descendent selector mới */
+/* Định dạng cái LOGO GIẢ có width đúng 10% như đề yêu cầu */
+nav .mock-img-logo {
+    display: inline-block;
+    width: 10%; /* Đúng 10% nha ní */
+    background-color: #0056b3; /* Màu xanh đạt chuẩn contrast */
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    font-weight: bold;
+    font-size: 14px;
     vertical-align: middle;
+    margin-right: 15px;
+}
+
+nav a {
+    color: #0056b3;
+    text-decoration: none;
+    margin-right: 10px;
 }
 
 
 /* ==========================================================================
-   4. GRID CLASS STYLING (2 cột, mỗi cột ~40%, có row-gap)
+   4. GRID CLASS STYLING (2 cột, mỗi cột ~40%)
    ========================================================================== */
 .grid {
     display: grid;
-    /* Chia 2 cột, mỗi cột khoảng 40% như đề yêu cầu */
-    grid-template-columns: 40% 40%; 
-    
-    /* Dùng space-around hoặc space-between để rải đều 2 cột ra, 
-       né cái bẫy bị lệch hẳn sang bên trái của đề bài */
-    justify-content: space-around; 
+    grid-template-columns: 40% 40%; /* 2 cột mỗi cột 40% */
+    justify-content: space-between; 
     align-items: start;
-    row-gap: 25px; /* Khoảng cách giữa các hàng */
+    row-gap: 25px;
 }
 
-/* Descendent selector: Chỉ style cho ảnh NẰM TRONG class .grid lên 100% */
-/* (Cái này giúp ảnh ôm trọn 40% của cột, không ảnh hưởng đến ảnh bên .flex) */
-.grid img {
-    width: 100%;
-    height: auto;
+/* Thay thế selector ".grid img" cũ bằng descendent selector mới */
+/* Chỉnh cái ẢNH GIẢ TRONG GRID có width 100% để nó khít với cột 40% */
+.grid .mock-img {
+    width: 100%; /* Đúng 100% nha ní */
+    height: 150px; /* Chiều cao cố định nhìn cho giống cái ảnh */
+    background-color: #555; /* Màu xám đậm để đạt tương phản tốt với chữ trắng */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
 }
 
 
@@ -78,31 +86,25 @@ nav img {
    ========================================================================== */
 .flex {
     display: flex;
-    /* Bật flex-wrap và justify-content để tùy chỉnh theo screenshot đề bài */
     flex-wrap: wrap;
-    justify-content: space-between; 
+    justify-content: space-around; 
     gap: 15px;
 }
 
-/* Thêm tí màu sắc cho các item trong flex nhìn cho rõ ràng */
 .flex-item {
     background-color: #e0e0e0;
+    color: #1a1a1a;
     padding: 20px;
-    min-width: 150px;
+    min-width: 120px;
     text-align: center;
 }
 
 
 /* ==========================================================================
-   6. COLOR CONTRAST (Né lỗi WAVE Validator)
+   6. COLOR CONTRAST & GLOBAL
    ========================================================================== */
-/* Đảm bảo màu chữ và màu nền có độ tương phản cao */
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffffff; /* Nền trắng hẳn */
-    color: #1a1a1a;            /* Chữ đen gần như tuyệt đối */
-}
-
-a {
-    color: #0056b3; /* Màu xanh đậm đạt chuẩn contrast */
+    background-color: #ffffff;
+    color: #1a1a1a;
 }
